@@ -1,5 +1,5 @@
-{pkgs, ...}: {
-  extraPlugins = with pkgs.vimPlugins; [
-    vim-grammarous
-  ];
+{
+  plugins.vimtex = {
+    enable = true;
+  };
 }

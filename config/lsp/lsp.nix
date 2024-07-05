@@ -59,6 +59,9 @@
         pyright = {enable = true;};
         ruff-lsp = {enable = true;};
 
+        # Language Tool Language Server
+        ltex = {enable = true;};
+
         rust-analyzer = {
           enable = true;
           installCargo = true;

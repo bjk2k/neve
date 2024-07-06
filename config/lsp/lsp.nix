@@ -7,6 +7,29 @@
       enable = true;
       capabilities = "offsetEncoding =  'utf-16'";
       servers = {
+        ruff.enable = true;
+        pylsp = {
+          enable = true;
+          settings = {
+            plugins = {
+              jedi_completion.fuzzy = true;
+
+              pylsp_mypy.enabled = true;
+
+              # We don't need those as ruff is already providing such features.
+              autopep8.enabled = false;
+              flake8.enabled = false;
+              mccabe.enabled = false;
+              preload.enabled = false;
+              pycodestyle.enabled = false;
+              pydocstyle.enabled = false;
+              pyflakes.enabled = false;
+              pylint.enabled = false;
+              ruff.enabled = false;
+              yapf.enabled = false;
+            };
+          };
+        };
         clangd = {enable = true;};
         lua-ls = {
           enable = true;
@@ -57,7 +80,7 @@
         };
         eslint = {enable = true;};
         pyright = {enable = true;};
-        ruff-lsp = {enable = true;};
+        # ruff-lsp = {enable = true;};
 
         # Language Tool Language Server
         ltex = {enable = true;};

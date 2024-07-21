@@ -1,0 +1,7 @@
+{
+  colorschemes = {
+    nord = {
+      enable = false;
+    };
+  };
+}

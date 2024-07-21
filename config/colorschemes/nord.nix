@@ -1,7 +1,7 @@
 {
   colorschemes = {
     nord = {
-      enable = false;
+      enable = true;
     };
   };
 }

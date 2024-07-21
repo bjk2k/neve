@@ -1,7 +1,7 @@
 {
   colorschemes = {
     kanagawa = {
-      enable = true;
+      enable = false;
       settings = {
         theme = "dragon";
       };

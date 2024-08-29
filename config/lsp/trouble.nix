@@ -15,7 +15,7 @@
     {
       mode = "n";
       key = "<leader>xx";
-      action = "<cmd>TroubleToggle<cr>";
+      action = "<cmd>Trouble diagnostics toggle<cr>";
       options = {
         silent = true;
         desc = "Document Diagnostics (Trouble)";
@@ -24,7 +24,7 @@
     {
       mode = "n";
       key = "<leader>xX";
-      action = "<cmd>TroubleToggle workspace_diagnostics<cr>";
+      action = "<cmd>Trouble workspace_diagnostics<cr>";
       options = {
         silent = true;
         desc = "Workspace Diagnostics (Trouble)";

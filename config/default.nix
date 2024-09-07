@@ -53,6 +53,11 @@
     ./ui/dressing-nvim.nix
     ./ui/indent-blankline.nix
     ./ui/noice.nix
+
+    ./ui/twilight.nix
+    ./ui/true-zen.nix
+    ./filetrees/neo-tree.nix
+
     ./ui/nvim-notify.nix
     ./ui/nui.nix
 
@@ -63,6 +68,7 @@
     ./utils/harpoon.nix
     ./utils/illuminate.nix
     ./utils/markdown-preview.nix
+    ./utils/arrow.nix
     ./utils/mini.nix
     ./utils/neodev.nix
     ./utils/venv.nix

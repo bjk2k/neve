@@ -69,6 +69,7 @@
     ./utils/illuminate.nix
     ./utils/markdown-preview.nix
     ./utils/arrow.nix
+    ./utils/orgmode.nix
     ./utils/mini.nix
     ./utils/neodev.nix
     ./utils/venv.nix

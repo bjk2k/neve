@@ -56,6 +56,7 @@
 
     ./ui/twilight.nix
     ./ui/true-zen.nix
+    ./ui/nerdy.nix
     ./filetrees/neo-tree.nix
 
     ./ui/nvim-notify.nix

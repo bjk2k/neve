@@ -28,6 +28,9 @@
     ./wakatime.nix
     ./which-key.nix
     ./wilder.nix
+
+    ./arrow.nix
+    ./venv.nix
   ];
 
   options = {
@@ -36,10 +39,10 @@
   config = lib.mkIf config.utils.enable {
     better-escape.enable = lib.mkDefault true;
     cloak.enable = lib.mkDefault true;
-    harpoon.enable = lib.mkDefault true;
+    harpoon.enable = lib.mkDefault false;
     markdown-preview.enable = lib.mkDefault false;
     mini.enable = lib.mkDefault true;
-    neocord.enable = lib.mkDefault true;
+    neocord.enable = lib.mkDefault false;
     neotest.enable = lib.mkDefault true;
     nvim-autopairs.enable = lib.mkDefault true;
     nvim-colorizer.enable = lib.mkDefault true;
@@ -57,5 +60,8 @@
     wakatime.enable = lib.mkDefault true;
     which-key.enable = lib.mkDefault true;
     wilder.enable = lib.mkDefault false;
+
+    arrow.enable = lib.mkDefault true;
+    venv.enable = lib.mkDefault true;
   };
 }

@@ -13,6 +13,11 @@
     ./nui.nix
     ./notify.nix
     ./web-devicons.nix
+
+
+    ./true-zen.nix
+    ./twilight.nix
+    ./nerdy.nix
   ];
 
   options = {
@@ -27,5 +32,8 @@
     notify.enable = lib.mkDefault true;
     nui.enable = lib.mkDefault true;
     web-devicons.enable = lib.mkDefault true;
+    truezen.enable = lib.mkDefault true;
+    twilight.enable = lib.mkDefault true;
+    nerdy.enable = lib.mkDefault true;
   };
 }

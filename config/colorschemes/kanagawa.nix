@@ -1,5 +1,10 @@
+{ lib, config, ... }:
 {
-  colorschemes = {
+  options = {
+    kanagawa.enable = lib.mkEnableOption "Enable kanagawa Colorscheme module";
+  };
+  config = lib.mkIf config.kanagawa.enable {
+    colorschemes = {
     kanagawa = {
       enable = true;
       settings = {
@@ -7,4 +12,10 @@
       };
     };
   };
+  };
+}
+
+
+{
+  
 }

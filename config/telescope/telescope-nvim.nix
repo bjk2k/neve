@@ -57,6 +57,10 @@
           action = "live_grep";
           options.desc = "Grep (root dir)";
         };
+        "<leader>fg" = {
+          action = "live_grep";
+          options.desc = "Grep (root dir)";
+        };
         "<leader>:" = {
           action = "command_history";
           options.desc = "Command History";

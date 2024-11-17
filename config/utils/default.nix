@@ -30,6 +30,7 @@
     ./wilder.nix
 
     ./arrow.nix
+    ./flash.nix
     ./venv.nix
   ];
 
@@ -62,6 +63,7 @@
     wilder.enable = lib.mkDefault false;
 
     arrow.enable = lib.mkDefault true;
+    flash.enable = lib.mkDefault true;
     venv.enable = lib.mkDefault true;
   };
 }

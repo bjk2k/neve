@@ -89,7 +89,10 @@
           "o"
         ];
         key = "s";
-        action.__raw = "function() require'flash'.jump() end";
+        action.__raw = "function() require'flash'.Jump() end";
+        options = {
+          desc = "Flash jump";
+        };
       }
       {
         mode = [
@@ -99,11 +102,17 @@
         ];
         key = "S";
         action.__raw = "function() require'flash'.treesitter() end";
+        options = {
+          desc = "Flash Treesitter Jump";
+        };
       }
       {
         mode = "o";
         key = "r";
         action.__raw = "function() require'flash'.remote() end";
+        options = {
+          desc = "Flash Remote Action";
+        };
       }
       {
         mode = [
@@ -112,12 +121,17 @@
         ];
         key = "R";
         action.__raw = "function() require'flash'.treesitter_search() end";
+        options = {
+          desc = "Flash Treesitter Search";
+        };
       }
-
       {
         mode = [ "c" ];
         key = "<c-s>";
         action.__raw = "function() require'flash'.toggle() end";
+        options = {
+          desc = "Flash toggle";
+        };
       }
 
       {

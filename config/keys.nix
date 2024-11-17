@@ -407,6 +407,17 @@
           desc = "Deletes to void register and paste over";
         };
       }
+      
+      # NeoTree
+      {
+        mode = "n";
+        key = "<leader>E";
+        action = "<cmd>Neotree toggle<CR>";
+        options = {
+          silent = true;
+          desc = "Explorer NeoTree (cwd)";
+        };
+      }
 
       # Copy stuff to system clipboard with <leader> + y or just y to have it just in vim
       {

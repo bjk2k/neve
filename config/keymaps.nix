@@ -282,6 +282,15 @@
 
     {
       mode = "n";
+      key = "<leader>ug";
+      action = ":lua require('telescope').extensions.nerdy.nerdy() ";
+      options = {
+        silent = true;
+        desc = "Open Nerdy Glyph UI";
+      };
+    }
+    {
+      mode = "n";
       key = "<leader>ul";
       action = ":lua ToggleLineNumber()<cr>";
       options = {

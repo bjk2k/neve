@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   extraPlugins = with pkgs.vimUtils; [
-    (vimUtils.buildVimPlugin {
+    (buildVimPlugin {
       pname = "nerdy.nvim";
       version = "main";
       src = pkgs.fetchFromGitHub {

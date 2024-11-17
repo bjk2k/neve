@@ -237,7 +237,7 @@
       {
         mode = "n";
         key = "<leader>ug";
-        action = ":lua require('telescope').extensions.nerdy.nerdy()";
+        action = ":lua require('telescope').extensions.nerdy.nerdy()<cr>";
         options = {
           silent = true;
           desc = "Toggle Nerdy Glyph UI";

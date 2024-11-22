@@ -44,6 +44,7 @@
           "vimdoc"
           "toml"
           "yaml"
+          "zig"
         ];
         auto_install = true;
         incremental_selection = {

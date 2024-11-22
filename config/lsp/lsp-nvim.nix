@@ -90,6 +90,9 @@
           ruff_lsp = {
             enable = true;
           };
+          zls = {
+            enable = true;
+          };
 
           rust_analyzer = {
             enable = true;

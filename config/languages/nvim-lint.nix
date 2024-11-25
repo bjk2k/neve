@@ -12,7 +12,7 @@
         go = [ "golangci-lint" ];
         nix = [ "statix" ];
         lua = [ "selene" ];
-        python = [ "flake8" ];
+        python = [ "ruff" ];
         javascript = [ "eslint_d" ];
         javascriptreact = [ "eslint_d" ];
         typescript = [ "eslint_d" ];

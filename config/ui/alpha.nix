@@ -91,6 +91,36 @@
           }
           (padding 1)
           {
+            type= "button";
+            val="  Find Project";
+            on_press = {
+              __raw = "function() require('telescope.builtin').find_files({ cwd = require('project_nvim.project').get_project_root() }) end";
+            };
+            opts = {
+              # hl = "comment";
+              keymap = [
+                "n"
+                "p"
+                ":lua require('telescope.builtin').find_files({ cwd = require('project_nvim.project').get_project_root() })<CR>"
+                {
+                  noremap = true;
+                  silent = true;
+                  nowait = true;
+                }
+              ];
+              shortcut = "p";
+
+              position = "center";
+              cursor = 3;
+              width = 38;
+              align_shortcut = "right";
+              hl_shortcut = "Keyword";
+            };
+          }
+          
+        
+          (padding 2)
+          {
             type = "button";
             val = "  New File";
             on_press = {

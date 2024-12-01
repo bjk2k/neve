@@ -50,7 +50,7 @@
     nvim-surround.enable = lib.mkDefault true;
     nvterm.enable = lib.mkDefault true;
     oil.enable = lib.mkDefault true;
-    persistence.enable = lib.mkDefault true;
+    persistence.enable = lib.mkDefault false;
     plenary.enable = lib.mkDefault true;
     project-nvim.enable = lib.mkDefault true;
     sidebar.enable = lib.mkDefault false;

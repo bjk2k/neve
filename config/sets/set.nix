@@ -31,7 +31,7 @@
       incsearch = true;
 
       # Enable text wrap
-      wrap = true;
+      wrap = false;
 
       # Better splitting
       splitbelow = true;
@@ -139,7 +139,7 @@
         g.neovide_cursor_vfx_particle_lifetime = 5.0
         g.neovide_cursor_vfx_particle_density = 14.0
         g.neovide_cursor_vfx_particle_speed = 12.0
-        g.neovide_transparency = 0.8
+        g.neovide_transparency = 0.9
 
         -- Neovide Fonts
         o.guifont = "JetBrainsMono Nerd Font:h14:Medium:i"

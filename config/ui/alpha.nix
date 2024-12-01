@@ -92,16 +92,16 @@
           (padding 1)
           {
             type= "button";
-            val="  Find Project";
+            val="  Select Project";
             on_press = {
-              __raw = "function() require('telescope.builtin').find_files({ cwd = require('project_nvim.project').get_project_root() }) end";
+              __raw = "function() require('telescope.builtin').projects() end";
             };
             opts = {
               # hl = "comment";
               keymap = [
                 "n"
                 "p"
-                ":lua require('telescope.builtin').find_files({ cwd = require('project_nvim.project').get_project_root() })<CR>"
+                ":Telescope projects <CR>"
                 {
                   noremap = true;
                   silent = true;

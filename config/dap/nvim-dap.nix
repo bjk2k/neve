@@ -20,7 +20,7 @@
           texthl = "DapLogPoint";
         };
       };
-      adapters = { lldb = { command = "lldb-dap"; }; };
+      adapters = { executables = { lldb = { command = "lldb-dap"; }; }; };
 
       extensions = {
         dap-python = { enable = true; };

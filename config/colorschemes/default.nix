@@ -1,5 +1,6 @@
 { lib, config, ... }: {
-  imports = [ ./base16.nix ./catppuccin.nix ./rose-pine.nix ./kanagawa.nix ];
+  imports =
+    [ ./base16.nix ./catppuccin.nix ./rose-pine.nix ./kanagawa.nix ./nord.nix ];
 
   options = {
     colorschemes.enable = lib.mkEnableOption "Enable colorschemes module";

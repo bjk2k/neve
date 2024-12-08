@@ -3,8 +3,6 @@
     nvim-dap.enable = lib.mkEnableOption "Enable Debug Adapter Protocol module";
   };
   config = lib.mkIf config.nvim-dap.enable {
-
-    plugins.rustaceanvim.enable = true;
     plugins.dap = {
       enable = true;
 
@@ -40,6 +38,7 @@
           hostName = "127.0.0.1";
           port = 5005;
         }];
+
       };
     };
 

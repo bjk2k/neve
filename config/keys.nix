@@ -596,7 +596,7 @@
       }
       {
         mode = [ "n" ];
-        key = "<A-c>";
+        key = "<A-s>";
         action.__raw = ''
           function() 
             local hi = require("fzf-lua.utils").ansi_from_hl

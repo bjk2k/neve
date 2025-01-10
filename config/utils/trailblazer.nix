@@ -16,5 +16,6 @@ in {
   };
   config = lib.mkIf config.trailblazer.enable {
     extraPlugins = [ trailblazerVimPlugin ];
+
   };
 }

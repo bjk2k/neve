@@ -474,86 +474,88 @@
         key = "<Esc>";
         action = "<cmd>nohlsearch<CR>";
       }
-      #
-      # # -- Trailblazer
-      # {
-      #   mode = [ "n" "v" ];
-      #   key = "<A-l>";
-      #   action.__raw = ''
-      #     function() 
-      #       local trails = require("trailblazer.trails")
-      #       require("trailblazer").switch_trail_mark_stack(trails.stacks.current_trail_mark_stack_name, false) -- fixes trails getting stuc
-      #       require("trailblazer").new_trail_mark() 
-      #     end
-      #   '';
-      #   options = { desc = "Trailblazer: toggle trail mark"; };
-      # }
-      #
-      # {
-      #   mode = [ "n" "v" ];
-      #   key = "<A-j>";
-      #   action.__raw = ''
-      #     function() 
-      #       local trails = require("trailblazer.trails")
-      #       require("trailblazer").switch_trail_mark_stack(trails.stacks.current_trail_mark_stack_name, false) -- fixes trails getting stuc
-      #     require('trailblazer').move_to_nearest(vim.api.nvim_get_current_buf(), 'fpath_up', 'lin_char_dist')
-      #     end
-      #   '';
-      #
-      #   options = { desc = "Trailblazer: next trail mark (global)"; };
-      # }
-      #
-      # {
-      #   mode = [ "n" "v" ];
-      #   key = "<A-k>";
-      #   action.__raw = ''
-      #     function() 
-      #       local trails = require("trailblazer.trails")
-      #       require("trailblazer").move_to_nearest(vim.api.nvim_get_current_buf(), "fpath_down", "lin_char_dist") 
-      #     end
-      #   '';
-      #   options = { desc = "Trailblazer: previous trail mark (global)"; };
-      # }
-      # {
-      #   mode = [ "n" "v" ];
-      #   key = "<A-m>";
-      #   action.__raw = ''
-      #     function() 
-      #       require("trailblazer").toggle_trail_mark_list("quickfix")
-      #     end
-      #   '';
-      #   options = { desc = "Trailblazer: toggle list (global)"; };
-      # }
-      # {
-      #   mode = [ "n" "v" ];
-      #   key = "<A-S>";
-      #   action.__raw = ''
-      #     function() 
-      #       require("trailblazer").delete_all_trail_marks()
-      #     end
-      #   '';
-      #   options = { desc = "Trailblazer: toggle list (global)"; };
-      # }
-      # {
-      #   mode = [ "n" "v" ];
-      #   key = "<A-.>";
-      #   action.__raw = ''
-      #     function() 
-      #       function() require("trailblazer").switch_to_next_trail_mark_stack()
-      #     end
-      #   '';
-      #   options = { desc = "Trailblazer: toggle list (global)"; };
-      # }
-      # {
-      #   mode = [ "n" "v" ];
-      #   key = "<A-,>";
-      #   action.__raw = ''
-      #     function() 
-      #       function() require("trailblazer").switch_to_previous_trail_mark_stack()
-      #     end
-      #   '';
-      #   options = { desc = "Trailblazer: toggle list (global)"; };
-      # }
+
+      # -- 
+      # -- Trailblazer
+      # -- 
+      {
+        mode = [ "n" "v" ];
+        key = "<A-l>";
+        action.__raw = ''
+          function() 
+            local trails = require("trailblazer.trails")
+            require("trailblazer").switch_trail_mark_stack(trails.stacks.current_trail_mark_stack_name, false) 
+            require("trailblazer").new_trail_mark() 
+          end
+        '';
+        options = { desc = "Trailblazer: toggle trail mark"; };
+      }
+
+      {
+        mode = [ "n" "v" ];
+        key = "<A-j>";
+        action.__raw = ''
+          function() 
+            local trails = require("trailblazer.trails")
+            require("trailblazer").switch_trail_mark_stack(trails.stacks.current_trail_mark_stack_name, false) -- fixes trails getting stuc
+            require('trailblazer').move_to_nearest(vim.api.nvim_get_current_buf(), 'fpath_up', 'lin_char_dist')
+          end
+        '';
+        options = { desc = "Trailblazer: next trail mark (global)"; };
+      }
+
+      {
+        mode = [ "n" "v" ];
+        key = "<A-k>";
+        action.__raw = ''
+          function() 
+            local trails = require("trailblazer.trails")
+            require("trailblazer").move_to_nearest(vim.api.nvim_get_current_buf(), "fpath_down", "lin_char_dist") 
+          end
+        '';
+        options = { desc = "Trailblazer: previous trail mark (global)"; };
+      }
+
+      {
+        mode = [ "n" "v" ];
+        key = "<A-m>";
+        action.__raw = ''
+          function() 
+            require("trailblazer").toggle_trail_mark_list("quickfix")
+          end
+        '';
+        options = { desc = "Trailblazer: toggle list (global)"; };
+      }
+      {
+        mode = [ "n" "v" ];
+        key = "<A-S>";
+        action.__raw = ''
+          function() 
+            require("trailblazer").delete_all_trail_marks()
+          end
+        '';
+        options = { desc = "Trailblazer: toggle list (global)"; };
+      }
+      {
+        mode = [ "n" "v" ];
+        key = "<A-.>";
+        action.__raw = ''
+          function() 
+            require("trailblazer").switch_to_next_trail_mark_stack()
+          end
+        '';
+        options = { desc = "Trailblazer: toggle list (global)"; };
+      }
+      {
+        mode = [ "n" "v" ];
+        key = "<A-,>";
+        action.__raw = ''
+          function() 
+              require("trailblazer").switch_to_previous_trail_mark_stack()
+          end
+        '';
+        options = { desc = "Trailblazer: toggle list (global)"; };
+      }
       # {
       #   mode = [ "n" ];
       #   key = "<A-`>";
@@ -568,6 +570,7 @@
       #   '';
       #   options = { desc = "Trailblazer: Add new stack"; };
       # }
+      #
       # {
       #   mode = [ "n" ];
       #   key = "<A-'>";

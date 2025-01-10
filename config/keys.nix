@@ -594,45 +594,45 @@
         '';
         options = { desc = "Trailblazer: Switch Stack"; };
       }
-      # {
-      #   mode = [ "n" ];
-      #   key = "<A-s>";
-      #   action.__raw = ''
-      #     function() 
-      #       local hi = require("fzf-lua.utils").ansi_from_hl
-      #       local stacks = require("trailblazer.trails").stacks.trail_mark_stack_list
-      #       local sorted_stacks = require("trailblazer.trails").stacks.get_sorted_stack_names()
-      #       local current_stack = require("trailblazer.trails").stacks.current_trail_mark_stack_name
-      #       vim.ui.select(sorted_stacks, {
-      #         prompt = "Choose a stack ",
-      #         format_item = function(item)
-      #           local fitem = item
-      #           local count = vim.tbl_count(stacks[item] and stacks[item].stack or {})
-      #           if item == current_stack then fitem = hi("TrailblazerSelectedStack", " " .. fitem) end -- add icon to current stack
-      #           fitem = string.sub(" ", #tostring(vim.fn.index(sorted_stacks, item) + 1), 1) .. fitem -- left align
-      #           return count > 0 and fitem .. hi("Comment", string.format(" (%d)", count)) or fitem -- add trails count if more than zero
-      #     end,
-      #     }, require("trailblazer").switch_trail_mark_stack)
-      #           end
-      #   '';
-      #   options = { desc = "Trailblazer: Select Mode"; };
-      # }
-      # {
-      #   mode = [ "n" ];
-      #   key = ''<A-">'';
-      #   action.__raw = ''
-      #     function() 
-      #       local stacks = require("trailblazer.trails").stacks.get_sorted_stack_names()
-      #       local current_stack = require("trailblazer.trails").stacks.current_trail_mark_stack_name
-      #       stacks = vim.tbl_filter(function(stack) return stack ~= current_stack end, stacks)
-      #       vim.ui.select(stacks, { prompt = "Delete stack " }, function(choice)
-      #         if choice then require("trailblazer").delete_trail_mark_stack(choice) end
-      #       end)
-      #     end
-      #   '';
-      #   options = { desc = "Trailblazer: Delete Stack"; };
-      # }
-      #
+      {
+        mode = [ "n" ];
+        key = "<A-c>";
+        action.__raw = ''
+          function() 
+            local hi = require("fzf-lua.utils").ansi_from_hl
+            local stacks = require("trailblazer.trails").stacks.trail_mark_stack_list
+            local sorted_stacks = require("trailblazer.trails").stacks.get_sorted_stack_names()
+            local current_stack = require("trailblazer.trails").stacks.current_trail_mark_stack_name
+            vim.ui.select(sorted_stacks, {
+              prompt = "Choose a stack ",
+              format_item = function(item)
+                local fitem = item
+                local count = vim.tbl_count(stacks[item] and stacks[item].stack or {})
+                if item == current_stack then fitem = hi("TrailblazerSelectedStack", " " .. fitem) end -- add icon to current stack
+                fitem = string.sub(" ", #tostring(vim.fn.index(sorted_stacks, item) + 1), 1) .. fitem -- left align
+                return count > 0 and fitem .. hi("Comment", string.format(" (%d)", count)) or fitem -- add trails count if more than zero
+          end,
+          }, require("trailblazer").switch_trail_mark_stack)
+                end
+        '';
+        options = { desc = "Trailblazer: Select Mode"; };
+      }
+      {
+        mode = [ "n" ];
+        key = "A-x";
+        action.__raw = ''
+          function() 
+            local stacks = require("trailblazer.trails").stacks.get_sorted_stack_names()
+            local current_stack = require("trailblazer.trails").stacks.current_trail_mark_stack_name
+            stacks = vim.tbl_filter(function(stack) return stack ~= current_stack end, stacks)
+            vim.ui.select(stacks, { prompt = "Delete stack " }, function(choice)
+              if choice then require("trailblazer").delete_trail_mark_stack(choice) end
+            end)
+          end
+        '';
+        options = { desc = "Trailblazer: Delete Stack"; };
+      }
+
     ];
   };
 }

@@ -1,9 +1,4 @@
-{
-  lib,
-  config,
-  ...
-}:
-{
+{ lib, config, ... }: {
   imports = [
     ./better-escape.nix
     ./cloak.nix
@@ -32,11 +27,11 @@
     ./arrow.nix
     ./flash.nix
     ./venv.nix
+    ./trailblazer.nix
+
   ];
 
-  options = {
-    utils.enable = lib.mkEnableOption "Enable utils module";
-  };
+  options = { utils.enable = lib.mkEnableOption "Enable utils module"; };
   config = lib.mkIf config.utils.enable {
     better-escape.enable = lib.mkDefault true;
     cloak.enable = lib.mkDefault true;
@@ -65,5 +60,7 @@
     arrow.enable = lib.mkDefault true;
     flash.enable = lib.mkDefault true;
     venv.enable = lib.mkDefault true;
+    trailblazer.enable = lib.mkDefault true;
+
   };
 }

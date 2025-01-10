@@ -474,162 +474,162 @@
         key = "<Esc>";
         action = "<cmd>nohlsearch<CR>";
       }
-
-      # -- Trailblazer
-      {
-        mode = [ "n" "v" ];
-        key = "<A-l>";
-        action.__raw = ''
-          function() 
-            local trails = require("trailblazer.trails")
-            require("trailblazer").switch_trail_mark_stack(trails.stacks.current_trail_mark_stack_name, false) -- fixes trails getting stuc
-            require("trailblazer").new_trail_mark() 
-          end
-        '';
-        options = { desc = "Trailblazer: toggle trail mark"; };
-      }
-
-      {
-        mode = [ "n" "v" ];
-        key = "<A-j>";
-        action.__raw = ''
-          function() 
-            local trails = require("trailblazer.trails")
-            require("trailblazer").switch_trail_mark_stack(trails.stacks.current_trail_mark_stack_name, false) -- fixes trails getting stuc
-          require('trailblazer').move_to_nearest(vim.api.nvim_get_current_buf(), 'fpath_up', 'lin_char_dist')
-          end
-        '';
-
-        options = { desc = "Trailblazer: next trail mark (global)"; };
-      }
-
-      {
-        mode = [ "n" "v" ];
-        key = "<A-k>";
-        action.__raw = ''
-          function() 
-            local trails = require("trailblazer.trails")
-            require("trailblazer").move_to_nearest(vim.api.nvim_get_current_buf(), "fpath_down", "lin_char_dist") 
-          end
-        '';
-        options = { desc = "Trailblazer: previous trail mark (global)"; };
-      }
-      {
-        mode = [ "n" "v" ];
-        key = "<A-m>";
-        action.__raw = ''
-          function() 
-            require("trailblazer").toggle_trail_mark_list("quickfix")
-          end
-        '';
-        options = { desc = "Trailblazer: toggle list (global)"; };
-      }
-      {
-        mode = [ "n" "v" ];
-        key = "<A-S>";
-        action.__raw = ''
-          function() 
-            require("trailblazer").delete_all_trail_marks()
-          end
-        '';
-        options = { desc = "Trailblazer: toggle list (global)"; };
-      }
-      {
-        mode = [ "n" "v" ];
-        key = "<A-.>";
-        action.__raw = ''
-          function() 
-            function() require("trailblazer").switch_to_next_trail_mark_stack()
-          end
-        '';
-        options = { desc = "Trailblazer: toggle list (global)"; };
-      }
-      {
-        mode = [ "n" "v" ];
-        key = "<A-,>";
-        action.__raw = ''
-          function() 
-            function() require("trailblazer").switch_to_previous_trail_mark_stack()
-          end
-        '';
-        options = { desc = "Trailblazer: toggle list (global)"; };
-      }
-      {
-        mode = [ "n" ];
-        key = "<A-`>";
-        action.__raw = ''
-          function() 
-            vim.ui.input({ prompt = "Stack Name: " }, function(input)
-              if not input then return end
-              require("trailblazer").switch_trail_mark_stack(input, false)
-              require("trailblazer").new_trail_mark()
-            end)
-          end
-        '';
-        options = { desc = "Trailblazer: Add new stack"; };
-      }
-      {
-        mode = [ "n" ];
-        key = "<A-'>";
-        action.__raw = ''
-          function() 
-            local hi = require("fzf-lua.utils").ansi_from_hl
-            local stacks = require("trailblazer.trails").stacks.trail_mark_stack_list
-            local sorted_stacks = require("trailblazer.trails").stacks.get_sorted_stack_names()
-            local current_stack = require("trailblazer.trails").stacks.current_trail_mark_stack_name
-            vim.ui.select(sorted_stacks, {
-              prompt = "Choose a stack ",
-              format_item = function(item)
-                local fitem = item
-                local count = vim.tbl_count(stacks[item] and stacks[item].stack or {})
-                if item == current_stack then fitem = hi("TrailblazerSelectedStack", " " .. fitem) end -- add icon to current stack
-                fitem = string.sub(" ", #tostring(vim.fn.index(sorted_stacks, item) + 1), 1) .. fitem -- left align
-                return count > 0 and fitem .. hi("Comment", string.format(" (%d)", count)) or fitem -- add trails count if more than zero
-              end,
-            }, require("trailblazer").switch_trail_mark_stack)
-          end
-        '';
-        options = { desc = "Trailblazer: Switch Stack"; };
-      }
-      {
-        mode = [ "n" ];
-        key = "<A-s>";
-        action.__raw = ''
-          function() 
-            local hi = require("fzf-lua.utils").ansi_from_hl
-            local stacks = require("trailblazer.trails").stacks.trail_mark_stack_list
-            local sorted_stacks = require("trailblazer.trails").stacks.get_sorted_stack_names()
-            local current_stack = require("trailblazer.trails").stacks.current_trail_mark_stack_name
-            vim.ui.select(sorted_stacks, {
-              prompt = "Choose a stack ",
-              format_item = function(item)
-                local fitem = item
-                local count = vim.tbl_count(stacks[item] and stacks[item].stack or {})
-                if item == current_stack then fitem = hi("TrailblazerSelectedStack", " " .. fitem) end -- add icon to current stack
-                fitem = string.sub(" ", #tostring(vim.fn.index(sorted_stacks, item) + 1), 1) .. fitem -- left align
-                return count > 0 and fitem .. hi("Comment", string.format(" (%d)", count)) or fitem -- add trails count if more than zero
-          end,
-          }, require("trailblazer").switch_trail_mark_stack)
-                end
-        '';
-        options = { desc = "Trailblazer: Select Mode"; };
-      }
-      {
-        mode = [ "n" ];
-        key = ''<A-">'';
-        action.__raw = ''
-          function() 
-            local stacks = require("trailblazer.trails").stacks.get_sorted_stack_names()
-            local current_stack = require("trailblazer.trails").stacks.current_trail_mark_stack_name
-            stacks = vim.tbl_filter(function(stack) return stack ~= current_stack end, stacks)
-            vim.ui.select(stacks, { prompt = "Delete stack " }, function(choice)
-              if choice then require("trailblazer").delete_trail_mark_stack(choice) end
-            end)
-          end
-        '';
-        options = { desc = "Trailblazer: Delete Stack"; };
-      }
-
+      #
+      # # -- Trailblazer
+      # {
+      #   mode = [ "n" "v" ];
+      #   key = "<A-l>";
+      #   action.__raw = ''
+      #     function() 
+      #       local trails = require("trailblazer.trails")
+      #       require("trailblazer").switch_trail_mark_stack(trails.stacks.current_trail_mark_stack_name, false) -- fixes trails getting stuc
+      #       require("trailblazer").new_trail_mark() 
+      #     end
+      #   '';
+      #   options = { desc = "Trailblazer: toggle trail mark"; };
+      # }
+      #
+      # {
+      #   mode = [ "n" "v" ];
+      #   key = "<A-j>";
+      #   action.__raw = ''
+      #     function() 
+      #       local trails = require("trailblazer.trails")
+      #       require("trailblazer").switch_trail_mark_stack(trails.stacks.current_trail_mark_stack_name, false) -- fixes trails getting stuc
+      #     require('trailblazer').move_to_nearest(vim.api.nvim_get_current_buf(), 'fpath_up', 'lin_char_dist')
+      #     end
+      #   '';
+      #
+      #   options = { desc = "Trailblazer: next trail mark (global)"; };
+      # }
+      #
+      # {
+      #   mode = [ "n" "v" ];
+      #   key = "<A-k>";
+      #   action.__raw = ''
+      #     function() 
+      #       local trails = require("trailblazer.trails")
+      #       require("trailblazer").move_to_nearest(vim.api.nvim_get_current_buf(), "fpath_down", "lin_char_dist") 
+      #     end
+      #   '';
+      #   options = { desc = "Trailblazer: previous trail mark (global)"; };
+      # }
+      # {
+      #   mode = [ "n" "v" ];
+      #   key = "<A-m>";
+      #   action.__raw = ''
+      #     function() 
+      #       require("trailblazer").toggle_trail_mark_list("quickfix")
+      #     end
+      #   '';
+      #   options = { desc = "Trailblazer: toggle list (global)"; };
+      # }
+      # {
+      #   mode = [ "n" "v" ];
+      #   key = "<A-S>";
+      #   action.__raw = ''
+      #     function() 
+      #       require("trailblazer").delete_all_trail_marks()
+      #     end
+      #   '';
+      #   options = { desc = "Trailblazer: toggle list (global)"; };
+      # }
+      # {
+      #   mode = [ "n" "v" ];
+      #   key = "<A-.>";
+      #   action.__raw = ''
+      #     function() 
+      #       function() require("trailblazer").switch_to_next_trail_mark_stack()
+      #     end
+      #   '';
+      #   options = { desc = "Trailblazer: toggle list (global)"; };
+      # }
+      # {
+      #   mode = [ "n" "v" ];
+      #   key = "<A-,>";
+      #   action.__raw = ''
+      #     function() 
+      #       function() require("trailblazer").switch_to_previous_trail_mark_stack()
+      #     end
+      #   '';
+      #   options = { desc = "Trailblazer: toggle list (global)"; };
+      # }
+      # {
+      #   mode = [ "n" ];
+      #   key = "<A-`>";
+      #   action.__raw = ''
+      #     function() 
+      #       vim.ui.input({ prompt = "Stack Name: " }, function(input)
+      #         if not input then return end
+      #         require("trailblazer").switch_trail_mark_stack(input, false)
+      #         require("trailblazer").new_trail_mark()
+      #       end)
+      #     end
+      #   '';
+      #   options = { desc = "Trailblazer: Add new stack"; };
+      # }
+      # {
+      #   mode = [ "n" ];
+      #   key = "<A-'>";
+      #   action.__raw = ''
+      #     function() 
+      #       local hi = require("fzf-lua.utils").ansi_from_hl
+      #       local stacks = require("trailblazer.trails").stacks.trail_mark_stack_list
+      #       local sorted_stacks = require("trailblazer.trails").stacks.get_sorted_stack_names()
+      #       local current_stack = require("trailblazer.trails").stacks.current_trail_mark_stack_name
+      #       vim.ui.select(sorted_stacks, {
+      #         prompt = "Choose a stack ",
+      #         format_item = function(item)
+      #           local fitem = item
+      #           local count = vim.tbl_count(stacks[item] and stacks[item].stack or {})
+      #           if item == current_stack then fitem = hi("TrailblazerSelectedStack", " " .. fitem) end -- add icon to current stack
+      #           fitem = string.sub(" ", #tostring(vim.fn.index(sorted_stacks, item) + 1), 1) .. fitem -- left align
+      #           return count > 0 and fitem .. hi("Comment", string.format(" (%d)", count)) or fitem -- add trails count if more than zero
+      #         end,
+      #       }, require("trailblazer").switch_trail_mark_stack)
+      #     end
+      #   '';
+      #   options = { desc = "Trailblazer: Switch Stack"; };
+      # }
+      # {
+      #   mode = [ "n" ];
+      #   key = "<A-s>";
+      #   action.__raw = ''
+      #     function() 
+      #       local hi = require("fzf-lua.utils").ansi_from_hl
+      #       local stacks = require("trailblazer.trails").stacks.trail_mark_stack_list
+      #       local sorted_stacks = require("trailblazer.trails").stacks.get_sorted_stack_names()
+      #       local current_stack = require("trailblazer.trails").stacks.current_trail_mark_stack_name
+      #       vim.ui.select(sorted_stacks, {
+      #         prompt = "Choose a stack ",
+      #         format_item = function(item)
+      #           local fitem = item
+      #           local count = vim.tbl_count(stacks[item] and stacks[item].stack or {})
+      #           if item == current_stack then fitem = hi("TrailblazerSelectedStack", " " .. fitem) end -- add icon to current stack
+      #           fitem = string.sub(" ", #tostring(vim.fn.index(sorted_stacks, item) + 1), 1) .. fitem -- left align
+      #           return count > 0 and fitem .. hi("Comment", string.format(" (%d)", count)) or fitem -- add trails count if more than zero
+      #     end,
+      #     }, require("trailblazer").switch_trail_mark_stack)
+      #           end
+      #   '';
+      #   options = { desc = "Trailblazer: Select Mode"; };
+      # }
+      # {
+      #   mode = [ "n" ];
+      #   key = ''<A-">'';
+      #   action.__raw = ''
+      #     function() 
+      #       local stacks = require("trailblazer.trails").stacks.get_sorted_stack_names()
+      #       local current_stack = require("trailblazer.trails").stacks.current_trail_mark_stack_name
+      #       stacks = vim.tbl_filter(function(stack) return stack ~= current_stack end, stacks)
+      #       vim.ui.select(stacks, { prompt = "Delete stack " }, function(choice)
+      #         if choice then require("trailblazer").delete_trail_mark_stack(choice) end
+      #       end)
+      #     end
+      #   '';
+      #   options = { desc = "Trailblazer: Delete Stack"; };
+      # }
+      #
     ];
   };
 }

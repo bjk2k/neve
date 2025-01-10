@@ -556,44 +556,44 @@
         '';
         options = { desc = "Trailblazer: toggle list (global)"; };
       }
-      # {
-      #   mode = [ "n" ];
-      #   key = "<A-`>";
-      #   action.__raw = ''
-      #     function() 
-      #       vim.ui.input({ prompt = "Stack Name: " }, function(input)
-      #         if not input then return end
-      #         require("trailblazer").switch_trail_mark_stack(input, false)
-      #         require("trailblazer").new_trail_mark()
-      #       end)
-      #     end
-      #   '';
-      #   options = { desc = "Trailblazer: Add new stack"; };
-      # }
-      #
-      # {
-      #   mode = [ "n" ];
-      #   key = "<A-'>";
-      #   action.__raw = ''
-      #     function() 
-      #       local hi = require("fzf-lua.utils").ansi_from_hl
-      #       local stacks = require("trailblazer.trails").stacks.trail_mark_stack_list
-      #       local sorted_stacks = require("trailblazer.trails").stacks.get_sorted_stack_names()
-      #       local current_stack = require("trailblazer.trails").stacks.current_trail_mark_stack_name
-      #       vim.ui.select(sorted_stacks, {
-      #         prompt = "Choose a stack ",
-      #         format_item = function(item)
-      #           local fitem = item
-      #           local count = vim.tbl_count(stacks[item] and stacks[item].stack or {})
-      #           if item == current_stack then fitem = hi("TrailblazerSelectedStack", " " .. fitem) end -- add icon to current stack
-      #           fitem = string.sub(" ", #tostring(vim.fn.index(sorted_stacks, item) + 1), 1) .. fitem -- left align
-      #           return count > 0 and fitem .. hi("Comment", string.format(" (%d)", count)) or fitem -- add trails count if more than zero
-      #         end,
-      #       }, require("trailblazer").switch_trail_mark_stack)
-      #     end
-      #   '';
-      #   options = { desc = "Trailblazer: Switch Stack"; };
-      # }
+      {
+        mode = [ "n" ];
+        key = "<A-`>";
+        action.__raw = ''
+          function() 
+            vim.ui.input({ prompt = "Stack Name: " }, function(input)
+              if not input then return end
+              require("trailblazer").switch_trail_mark_stack(input, false)
+              require("trailblazer").new_trail_mark()
+            end)
+          end
+        '';
+        options = { desc = "Trailblazer: Add new stack"; };
+      }
+
+      {
+        mode = [ "n" ];
+        key = "<A-'>";
+        action.__raw = ''
+          function() 
+            local hi = require("fzf-lua.utils").ansi_from_hl
+            local stacks = require("trailblazer.trails").stacks.trail_mark_stack_list
+            local sorted_stacks = require("trailblazer.trails").stacks.get_sorted_stack_names()
+            local current_stack = require("trailblazer.trails").stacks.current_trail_mark_stack_name
+            vim.ui.select(sorted_stacks, {
+              prompt = "Choose a stack ",
+              format_item = function(item)
+                local fitem = item
+                local count = vim.tbl_count(stacks[item] and stacks[item].stack or {})
+                if item == current_stack then fitem = hi("TrailblazerSelectedStack", " " .. fitem) end -- add icon to current stack
+                fitem = string.sub(" ", #tostring(vim.fn.index(sorted_stacks, item) + 1), 1) .. fitem -- left align
+                return count > 0 and fitem .. hi("Comment", string.format(" (%d)", count)) or fitem -- add trails count if more than zero
+              end,
+            }, require("trailblazer").switch_trail_mark_stack)
+          end
+        '';
+        options = { desc = "Trailblazer: Switch Stack"; };
+      }
       # {
       #   mode = [ "n" ];
       #   key = "<A-s>";

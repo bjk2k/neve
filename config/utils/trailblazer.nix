@@ -15,6 +15,9 @@ in {
     trailblazer.enable = lib.mkEnableOption "Enable harpoon module";
   };
   config = lib.mkIf config.trailblazer.enable {
+    # ensures fzf-lua is installed
+    plugins.fzf-lua = { enable = true; };
+
     extraPlugins = [ trailblazerVimPlugin ];
 
   };

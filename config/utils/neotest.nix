@@ -1,26 +1,22 @@
-{
-  lib,
-  config,
-  pkgs,
-  ...
-}:
-{
+{ lib, config, pkgs, ... }: {
   # TODO: Refactor this as neotest is supported on nixvim now
-  options = {
-    neotest.enable = lib.mkEnableOption "Enable neotest module";
-  };
+  options = { neotest.enable = lib.mkEnableOption "Enable neotest module"; };
   config = lib.mkIf config.neotest.enable {
     extraPlugins = with pkgs.vimPlugins; [
-      (pkgs.vimUtils.buildVimPlugin {
-        pname = "neotest-java";
-        version = "v0.9.0";
-        src = pkgs.fetchFromGitHub {
-          owner = "rcasia";
-          repo = "neotest-java";
-          rev = "2234bfa8044dc39a8baf90470747c65e4623a222";
-          sha256 = "0w5fvqic3qapi9ggfb81nqa9fl6jv831s91r0wgn4d7c35h0340r";
-        };
-      })
+      # (pkgs.vimUtils.buildVimPlugin {
+      #   pname = "neotest-java";
+      #   version = "v0.9.0";
+      #   src = pkgs.fetchFromGitHub {
+      #     owner = "rcasia";
+      #     repo = "neotest-java";
+      #     rev = "2234bfa8044dc39a8baf90470747c65e4623a222";
+      #     sha256 = "0w5fvqic3qapi9ggfb81nqa9fl6jv831s91r0wgn4d7c35h0340r";
+      #   };
+      # })
+      neotest
+      neotest-plenary
+
+      vim-test
       (pkgs.vimUtils.buildVimPlugin {
         pname = "neotest-vim-test";
         version = "2023-04-17";
@@ -31,10 +27,9 @@
           sha256 = "12ix1lzmqlk3iyngaafby9c02fcl9d5iva965miwxfljvmibjnbw";
         };
       })
-      neotest
+
+      neotest-java
       FixCursorHold-nvim
-      neotest-plenary
-      vim-test
       neotest-python
       neotest-vitest
     ];
@@ -116,7 +111,8 @@
       {
         mode = "n";
         key = "<leader>to";
-        action = "<cmd>lua require('neotest').output.open{ enter = true, auto_close = true }<CR>";
+        action =
+          "<cmd>lua require('neotest').output.open{ enter = true, auto_close = true }<CR>";
         options = {
           desc = "Show Output";
           silent = true;

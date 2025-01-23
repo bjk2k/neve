@@ -2,11 +2,6 @@
   options = { fidget.enable = lib.mkEnableOption "Enable fidget module"; };
   config = lib.mkIf config.fidget.enable {
 
-    plugins.fidget = {
-      settings = {
-
-        enable = true;
-      };
-    };
+    plugins.fidget = { enable = true; };
   };
 }

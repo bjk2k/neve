@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }: {
+{ lib, config, ... }: {
   options = { blink.enable = lib.mkEnableOption "Enable blink-cmp module"; };
   config = lib.mkIf config.blink.enable {
     plugins = {

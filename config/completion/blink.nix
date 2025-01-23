@@ -7,7 +7,7 @@
 
         settings = {
           fuzzy.prebuilt_binaries = {
-            download = false;
+            download = true;
             ignore_version_mismatch = true;
           };
 
@@ -98,15 +98,15 @@
           completion = {
             accept = { auto_brackets = { enabled = false; }; };
 
-            list = {
-              selection = {
-                preselect.__raw = ''
-                  function(ctx)
-                    return ctx.mode ~= 'cmdline' and not require('blink.cmp').snippet_active({ direction = 1 })
-                  end
-                '';
-              };
-            };
+            # list = {
+            #   selection = {
+            #     preselect.__raw = ''
+            #       function(ctx)
+            #         return ctx.mode ~= 'cmdline' and not require('blink.cmp').snippet_active({ direction = 1 })
+            #       end
+            #     '';
+            #   };
+            # };
 
             documentation = {
               auto_show = true;
@@ -114,6 +114,7 @@
               treesitter_highlighting = true;
             };
             trigger.show_in_snippet = false;
+
             menu = {
               auto_show = true;
 

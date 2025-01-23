@@ -11,13 +11,54 @@
             ignore_version_mismatch = true;
           };
 
-          appearance = { use_nvim_cmp_as_default = true; };
+          # appearance = { use_nvim_cmp_as_default = true; };
+          appearance = {
+            kind_icons = {
+              Copilot = "";
+              Text = "󰉿";
+              Method = "󰊕";
+              Function = "󰊕";
+              Constructor = "󰒓";
 
-          keymap = { preset = "enter"; };
+              Field = "󰜢";
+              Variable = "󰆦";
+              Property = "󰖷";
 
+              Class = "󱡠";
+              Interface = "󱡠";
+              Struct = "󱡠";
+              Module = "󰅩";
+
+              Unit = "󰪚";
+              Value = "󰦨";
+              Enum = "󰦨";
+              EnumMember = "󰦨";
+
+              Keyword = "󰻾";
+              Constant = "󰏿";
+
+              Snippet = "󱄽";
+              Color = "󰏘";
+              File = "󰈔";
+              Reference = "󰬲";
+              Folder = "󰉋";
+              Event = "󱐋";
+              Operator = "󰪚";
+              TypeParameter = "󰬛";
+            };
+          };
+
+          keymap = {
+            preset = "super-tab";
+            "<Tab>" = [ "select_next" "snippet_forward" "fallback" ];
+            "<S-Tab>" = [ "select_prev" "snippet_backward" "fallback" ];
+            "<CR>" = [ "accept" "fallback" ];
+          };
+
+          lazyLoad = { settings = { event = "InsertEnter"; }; };
           signature = {
             # let noice handle this
-            enabled = false;
+            enabled = true;
           };
 
           sources = {
@@ -37,6 +78,7 @@
                 async = true;
                 module = "blink-cmp-copilot";
                 name = "copilot";
+
               };
 
               cmp_yanky = {
@@ -68,10 +110,10 @@
 
             documentation = {
               auto_show = true;
-              auto_show_delay_ms = 500;
+              auto_show_delay_ms = 0;
               treesitter_highlighting = true;
             };
-
+            trigger.show_in_snippet = false;
             menu = {
               auto_show = true;
 

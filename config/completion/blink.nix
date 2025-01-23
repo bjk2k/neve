@@ -57,7 +57,7 @@
 
           signature = {
             # let noice handle this
-            enabled = false;
+            enabled = true;
           };
 
           sources = {

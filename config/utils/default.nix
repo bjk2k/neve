@@ -59,7 +59,7 @@
 
     arrow.enable = lib.mkDefault true;
     flash.enable = lib.mkDefault true;
-    venv.enable = lib.mkDefault true;
+    venv.enable = lib.mkDefault false;
     trailblazer.enable = lib.mkDefault true;
 
   };

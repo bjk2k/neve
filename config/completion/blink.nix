@@ -57,17 +57,17 @@
 
           signature = {
             # let noice handle this
-            enabled = true;
+            enabled = false;
           };
 
           sources = {
             default = [
               "lsp"
+              "copilot"
               "path"
               "snippets"
               "buffer"
               "cmp_yanky"
-              "copilot"
               # "emoji"
               # "lazydev"
             ];

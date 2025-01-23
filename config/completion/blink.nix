@@ -55,7 +55,6 @@
             "<CR>" = [ "accept" "fallback" ];
           };
 
-          lazyLoad = { settings = { event = "InsertEnter"; }; };
           signature = {
             # let noice handle this
             enabled = true;

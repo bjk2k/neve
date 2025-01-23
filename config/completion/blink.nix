@@ -1,6 +1,6 @@
 { pkgs, lib, config, ... }: {
   options = { blink.enable = lib.mkEnableOption "Enable blink-cmp module"; };
-  config = lib.mkIf config.cmp.enable {
+  config = lib.mkIf config.blink.enable {
     plugins = {
       blink-cmp = {
         enable = true;
@@ -69,7 +69,7 @@
               "buffer"
               "cmp_yanky"
               "copilot"
-              "emoji"
+              # "emoji"
               "lazydev"
             ];
 
@@ -87,26 +87,26 @@
                 module = "blink.compat.source";
               };
 
-              emoji = {
-                module = "blink-emoji";
-                name = "Emoji";
-                score_offset = -30;
-              };
+              # emoji = {
+              #   module = "blink-emoji";
+              #   name = "Emoji";
+              #   score_offset = -30;
+              # };
             };
           };
 
           completion = {
             accept = { auto_brackets = { enabled = false; }; };
 
-            # list = {
-            #   selection = {
-            #     preselect.__raw = ''
-            #       function(ctx)
-            #         return ctx.mode ~= 'cmdline' and not require('blink.cmp').snippet_active({ direction = 1 })
-            #       end
-            #     '';
-            #   };
-            # };
+            list = {
+              selection = {
+                preselect.__raw = ''
+                  function(ctx)
+                    return ctx.mode ~= 'cmdline' and not require('blink.cmp').snippet_active({ direction = 1 })
+                  end
+                '';
+              };
+            };
 
             documentation = {
               auto_show = true;
@@ -150,7 +150,7 @@
       blink-cmp-copilot = { enable = true; };
     };
 
-    extraPlugins = with pkgs.vimPlugins; [ blink-emoji ];
+    # extraPlugins = with pkgs.vimPlugins; [ blink-emoji ];
   };
 }
 

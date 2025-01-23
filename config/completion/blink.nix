@@ -69,7 +69,7 @@
               "cmp_yanky"
               "copilot"
               # "emoji"
-              "lazydev"
+              # "lazydev"
             ];
 
             providers = {

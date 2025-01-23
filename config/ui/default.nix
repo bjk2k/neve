@@ -12,6 +12,7 @@
     ./true-zen.nix
     ./twilight.nix
     ./nerdy.nix
+    ./avante.nix
   ];
 
   options = { ui.enable = lib.mkEnableOption "Enable ui module"; };
@@ -27,5 +28,6 @@
     truezen.enable = lib.mkDefault true;
     twilight.enable = lib.mkDefault true;
     nerdy.enable = lib.mkDefault true;
+    avante.enable = lib.mkDefault true;
   };
 }

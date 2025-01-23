@@ -1,15 +1,6 @@
-{
-  lib,
-  config,
-  ...
-}:
-{
-  imports = [
-    ./treesitter-nvim.nix
-    ./nvim-jdtls.nix
-    ./nvim-lint.nix
-    ./prose.nix
-  ];
+{ lib, config, ... }: {
+  imports =
+    [ ./treesitter-nvim.nix ./nvim-jdtls.nix ./nvim-lint.nix ./prose.nix ];
 
   options = {
     languages.enable = lib.mkEnableOption "Enable languages module";

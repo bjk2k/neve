@@ -28,7 +28,7 @@
     ./flash.nix
     ./venv.nix
     ./trailblazer.nix
-
+    ./orgmode.nix
   ];
 
   options = { utils.enable = lib.mkEnableOption "Enable utils module"; };
@@ -62,5 +62,6 @@
     venv.enable = lib.mkDefault false;
     trailblazer.enable = lib.mkDefault true;
 
+    orgmode.enable = lib.mkDefault true;
   };
 }

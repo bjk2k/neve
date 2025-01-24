@@ -1,5 +1,4 @@
-{ lib, config, ... }:
-{
+{ lib, config, ... }: {
   options = {
     nvim-lint.enable = lib.mkEnableOption "Enable nvim-lint module";
   };
@@ -7,8 +6,8 @@
     plugins.lint = {
       enable = true;
       lintersByFt = {
-        c = [ "cpplint" ];
-        cpp = [ "cpplint" ];
+        c = [ "clangtidy" ];
+        cpp = [ "clangtidy" ];
         go = [ "golangci-lint" ];
         nix = [ "statix" ];
         lua = [ "selene" ];

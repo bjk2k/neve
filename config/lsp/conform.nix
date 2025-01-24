@@ -1,8 +1,5 @@
-{ lib, config, ... }:
-{
-  options = {
-    conform.enable = lib.mkEnableOption "Enable conform module";
-  };
+{ lib, config, ... }: {
+  options = { conform.enable = lib.mkEnableOption "Enable conform module"; };
   config = lib.mkIf config.conform.enable {
 
     plugins.conform-nvim = {
@@ -59,6 +56,8 @@
             __unkeyed-2 = "prettier";
             stop_after_first = true;
           };
+
+          cpp = [ "clang_format" ];
           rust = [ "rustfmt" ];
         };
       };

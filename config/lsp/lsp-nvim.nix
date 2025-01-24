@@ -67,7 +67,10 @@
           pyright = { enable = true; };
           ruff_lsp = { enable = true; };
           zls = { enable = true; };
-          ltex = { enable = true; };
+          ltex = {
+            enable = true;
+            settings = { language = "en-GB"; };
+          };
 
           # rust_analyzer = {
           #   enable = true;

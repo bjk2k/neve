@@ -62,6 +62,6 @@
     venv.enable = lib.mkDefault false;
     trailblazer.enable = lib.mkDefault true;
 
-    orgmode.enable = lib.mkDefault true;
+    orgmode.enable = lib.mkDefault false;
   };
 }

@@ -634,7 +634,7 @@
       }
       {
         mode = [ "n" ];
-        keys = "C-=";
+        key = "<C-=>";
         action.__raw = ''
           function() 
             vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * 1.25
@@ -643,7 +643,7 @@
       }
       {
         mode = [ "n" ];
-        keys = "C--";
+        key = "<C-->";
         action.__raw = ''
           function() 
             vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * (1/1.25)

@@ -6,7 +6,7 @@ let
       owner = "LeonHeidelbach";
       repo = "trailblazer.nvim";
       rev = "master";
-      sha256 = "sha256-9q8CmbUGmbKb7w4fzOS7XBSg8YM5WwqwvLUN2pVOAtI=";
+      sha256 = "sha256-uMlp+PqYFgal7lptARJnRToj/QR9BKHa3+0VtBb4L2w=";
     };
 
   };

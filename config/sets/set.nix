@@ -131,7 +131,7 @@
         g.neovide_cursor_vfx_particle_density = 14.0
         g.neovide_cursor_vfx_particle_speed = 12.0
         g.neovide_transparency = 0.9
-
+        g:neovide_scale_factor=1.0
         -- option as meta key
         g.neovide_input_macos_option_key_is_meta = "both"
 

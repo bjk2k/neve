@@ -632,7 +632,24 @@
         '';
         options = { desc = "Trailblazer: Delete Stack"; };
       }
-
+      {
+        mode = [ "n" ];
+        keys = "C-=";
+        action.__raw = ''
+          function() 
+            vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * 1.25
+          end
+        '';
+      }
+      {
+        mode = [ "n" ];
+        keys = "C--";
+        action.__raw = ''
+          function() 
+            vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * (1/1.25)
+          end
+        '';
+      }
     ];
   };
 }

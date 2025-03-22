@@ -3,42 +3,42 @@
     nvim-dap.enable = lib.mkEnableOption "Enable Debug Adapter Protocol module";
   };
   config = lib.mkIf config.nvim-dap.enable {
-    plugins.dap = {
-      enable = true;
-
-      signs = {
-        dapBreakpoint = {
-          text = "●";
-          texthl = "DapBreakpoint";
-        };
-        dapBreakpointCondition = {
-          text = "●";
-          texthl = "DapBreakpointCondition";
-        };
-        dapLogPoint = {
-          text = "◆";
-          texthl = "DapLogPoint";
-        };
+    plugins = {
+      dap-ui = {
+        enable = true;
+        settings.floating.mappings = { close = [ "<ESC>" "q" ]; };
       };
-      adapters = { executables = { lldb = { command = "lldb-dap"; }; }; };
+      dap-python = { enable = true; };
+      dap-virtual-text = { enable = true; };
+      dap = {
+        enable = true;
 
-      extensions = {
-        dap-python = { enable = true; };
-        dap-ui = {
-          enable = true;
-          floating.mappings = { close = [ "<ESC>" "q" ]; };
+        signs = {
+          dapBreakpoint = {
+            text = "●";
+            texthl = "DapBreakpoint";
+          };
+          dapBreakpointCondition = {
+            text = "●";
+            texthl = "DapBreakpointCondition";
+          };
+          dapLogPoint = {
+            text = "◆";
+            texthl = "DapLogPoint";
+          };
         };
-        dap-virtual-text = { enable = true; };
-      };
-      configurations = {
-        java = [{
-          type = "java";
-          request = "launch";
-          name = "Debug (Attach) - Remote";
-          hostName = "127.0.0.1";
-          port = 5005;
-        }];
+        adapters = { executables = { lldb = { command = "lldb-dap"; }; }; };
 
+        configurations = {
+          java = [{
+            type = "java";
+            request = "launch";
+            name = "Debug (Attach) - Remote";
+            hostName = "127.0.0.1";
+            port = 5005;
+          }];
+
+        };
       };
     };
 

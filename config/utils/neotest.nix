@@ -16,17 +16,17 @@
       neotest
       neotest-plenary
 
-      vim-test
-      (pkgs.vimUtils.buildVimPlugin {
-        pname = "neotest-vim-test";
-        version = "2023-04-17";
-        src = pkgs.fetchFromGitHub {
-          owner = "nvim-neotest";
-          repo = "neotest-vim-test";
-          rev = "75c4228882ae4883b11bfce9b8383e637eb44192";
-          sha256 = "12ix1lzmqlk3iyngaafby9c02fcl9d5iva965miwxfljvmibjnbw";
-        };
-      })
+      #       vim-test
+      #       (pkgs.vimUtils.buildVimPlugin {
+      #         pname = "neotest-vim-test";
+      #         version = "2023-04-17";
+      #         src = pkgs.fetchFromGitHub {
+      #           owner = "nvim-neotest";
+      #           repo = "neotest-vim-test";
+      #           rev = "75c4228882ae4883b11bfce9b8383e637eb44192";
+      #           sha256 = "12ix1lzmqlk3iyngaafby9c02fcl9d5iva965miwxfljvmibjnbw";
+      #         };
+      #       })
 
       neotest-java
       FixCursorHold-nvim
@@ -54,9 +54,6 @@
           require("neotest-python")({
           dap = { justMyCode = false },
           }),
-          require "neotest-vim-test" {
-          ignore_file_types = { "python", "java", "vim", "lua", "javascript", "typescript" },
-          },
         },
         output = { enabled = true, open_on_run = true },
         summary = { enabled = true, },

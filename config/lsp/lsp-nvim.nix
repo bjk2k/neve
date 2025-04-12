@@ -65,7 +65,7 @@
           };
           eslint = { enable = true; };
           pyright = { enable = true; };
-          ruff_lsp = { enable = true; };
+          ruff = { enable = true; };
           zls = { enable = true; };
           ltex = {
             enable = true;

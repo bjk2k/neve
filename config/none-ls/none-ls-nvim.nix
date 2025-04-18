@@ -34,6 +34,7 @@
         };
         formatting = {
           alejandra = { enable = false; };
+          nixfmt = { enable = true; };
           prettier = {
             enable = true;
             settings = ''

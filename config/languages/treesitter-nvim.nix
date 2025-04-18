@@ -59,6 +59,13 @@
 
     plugins.treesitter-textobjects = {
       enable = true;
+      lazyLoad.settings.event = [
+        "BufNewFile"
+        "BufReadPost"
+        "BufWritePost"
+        "DeferredUIEnter"
+      ];
+
       select = {
         enable = true;
         lookahead = true;
@@ -104,10 +111,25 @@
 
     plugins.ts-autotag = { enable = true; };
 
-    plugins.treesitter-context = { enable = false; };
+    plugins.treesitter-context = { enable = false; 
+      lazyLoad.settings.event = [
+        "BufNewFile"
+        "BufReadPost"
+        "BufWritePost"
+        "DeferredUIEnter"
+      ];
+
+    };
 
     plugins.ts-context-commentstring = {
       enable = true;
+      lazyLoad.settings.event = [
+        "BufNewFile"
+        "BufReadPost"
+        "BufWritePost"
+        "DeferredUIEnter"
+      ];
+
       disableAutoInitialization = false;
     };
   };

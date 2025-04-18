@@ -19,7 +19,6 @@
     ./ui
     ./utils
   ];
-  plugins.lz-n.enable = true;
 
   bufferlines.enable = lib.mkDefault true;
   colorschemes.enable = lib.mkDefault true;

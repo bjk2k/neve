@@ -138,29 +138,6 @@
         };
       }
 
-      # multicursor
-      {
-        key = "<leader>mm";
-        action =
-          ''<cmd>lua require("multicursor-nvim").matchAllAddCursors()<cr>'';
-        options.desc = "MultiCursor Match All";
-      }
-      {
-        key = "<leader>mc";
-        action = ''<cmd>lua require("multicursor-nvim").clearCursors()<cr>'';
-        options.desc = "MultiCursor Clear All Cursors";
-      }
-      {
-        key = "<leader>m<up>";
-        action = ''<cmd>lua require("multicursor-nvim").lineAddCursor(-1)<cr>'';
-        options.desc = "Add multicursor above";
-      }
-      {
-        key = "<leader>m<up>";
-        action = ''<cmd>lua require("multicursor-nvim").lineAddCursor(1)<cr>'';
-        options.desc = "Add multicursor below";
-      }
-
       # Windows
       {
         mode = "n";

@@ -64,6 +64,6 @@
     trailblazer.enable = lib.mkDefault true;
 
     orgmode.enable = lib.mkDefault false;
-    multicursor.enable = lib.mkDefault true;
+    multicursor.enable = lib.mkDefault false;
   };
 }

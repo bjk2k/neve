@@ -6,6 +6,7 @@
   config = lib.mkIf config.bufferline.enable {
     plugins = {
       bufferline = {
+        lazyLoad.settings.event = "DeferredUIEnter";
         enable = true;
         settings = {
           options = {

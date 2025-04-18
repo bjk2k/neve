@@ -4,7 +4,7 @@
     plugins.render-markdown = { enable = true; };
     plugins.vimtex = {
       enable = true;
-
+      lazyLoad.settings.ft = ["tex"];
       texlivePackage = null;
     };
   };

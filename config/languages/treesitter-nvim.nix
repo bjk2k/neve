@@ -5,6 +5,12 @@
   config = lib.mkIf config.treesitter-nvim.enable {
     plugins.treesitter = {
       enable = true;
+      lazyLoad.settings.event = [
+        "BufNewFile"
+        "BufReadPost"
+        "BufWritePost"
+        "DeferredUIEnter"
+      ];
       settings = {
         highlight = { enable = true; };
         indent = { enable = true; };

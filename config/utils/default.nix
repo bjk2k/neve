@@ -29,6 +29,7 @@
     ./venv.nix
     ./trailblazer.nix
     ./orgmode.nix
+    ./multicursor.nix
   ];
 
   options = { utils.enable = lib.mkEnableOption "Enable utils module"; };
@@ -63,5 +64,6 @@
     trailblazer.enable = lib.mkDefault true;
 
     orgmode.enable = lib.mkDefault false;
+    multicursor.enable = lib.mkDefault true;
   };
 }
